@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Home Page {% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_manage.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <div class="container">
+            <img  src="{{ url_for('static', filename=imgPath) }}" alt="">
+        </div>
+       
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Articles commandés</th>
+                    <th scope="col">Prix Unitaire</th>
+                    <th scope="col">Quantite</th>
+                    <th scope="col">Prix Total</th>
+                </tr>
+            </thead>
+            <h1>{{ produit }}</h1>
+            <tbody>
+                {% if produit != None %}
+                    {% for prod in produit %}
+                        <tr>
+                            <th scope="row">{{ prod }}</th>
+                            <td>{{ produit[prod]["prixUnitaire"] }}</td>
+                            <td>{{ produit[prod]["quantite"] }}</td>
+                            <td style="text-align: right;">{{ produit[prod]["prixTotal"] }} FCFA</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                <tr class="table-dark">
+                    <th scope="row">Prix Total</th>
+                    <td colspan="3" style="text-align: right;">{{ prixTotal }} FCFA</td>
+                </tr>
+            </tbody>
+        </table>            
+        </ul>
+    </main>
+{% endblock %}
+
+{% block js_include %}
+<script src="" > </script>  
+{% endblock %}
